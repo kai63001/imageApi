@@ -1,15 +1,19 @@
 package steal
 
 import (
+	"strconv"
 	"strings"
 
 	"github.com/gocolly/colly"
+	"github.com/gocolly/colly/extensions"
 )
 
-func ListSteal(url string) []map[string]interface{}{
+func ListSteal(typeWall string,path string,page int) []map[string]interface{}{
 	k := colly.NewCollector(
-		colly.AllowedDomains("wall.alphacoders.com"),
+		colly.AllowedDomains(typeWall+".alphacoders.com"),
 	);
+	extensions.RandomUserAgent(k)
+    extensions.Referer(k)
 	imageData := make([]map[string]interface{}, 0, 0)
 	k.OnHTML("img[src]",func(e *colly.HTMLElement) {
 		link := e.Attr("src")
@@ -23,6 +27,6 @@ func ListSteal(url string) []map[string]interface{}{
 			imageData = append(imageData, singleMap)
 		}
 	})
-	k.Visit(url)
+	k.Visit("https://"+typeWall+".alphacoders.com"+"/"+path+"?page="+strconv.Itoa(page))
 	return imageData
 }

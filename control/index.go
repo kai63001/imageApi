@@ -6,5 +6,5 @@ import (
 )
 
 func GetHome(c *gin.Context) {
-	c.JSON(200, steal.ListSteal("https://wall.alphacoders.com/newest_wallpapers.php?page=1"))
+	c.JSON(200, steal.ListSteal("wall","newest_wallpapers.php",1))
 }
