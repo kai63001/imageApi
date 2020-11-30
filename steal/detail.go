@@ -91,10 +91,15 @@ func ImageDetailSteal(typeWall string,id string) Detail{
 		singleMap["resolution"] = resolution
 		resolutionData = append(resolutionData, singleMap)
 	})
+	nameWallpaepr := ""
+	c.OnHTML(".main-content",func(e *colly.HTMLElement){
+		name := e.Attr("title")
+		nameWallpaepr = name
+	})
 
 	c.Visit("https://"+typeWall+".alphacoders.com"+"/big.php?i="+id)
 	m := Detail{
-		"name",resolutionData,authorData,imageData,categolyData,tagData,
+		nameWallpaepr,resolutionData,authorData,imageData,categolyData,tagData,
 	}
 	return m
 }

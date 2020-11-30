@@ -7,7 +7,7 @@ import (
 
 func main() {
 	r := gin.Default()
-	r.GET("/",control.GetHome)
+	r.GET("/p/:path",control.GetHome)
 	r.GET("/image/:id", control.ImageControl)
 	r.Run()
 }
