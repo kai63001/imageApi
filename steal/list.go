@@ -20,7 +20,7 @@ func ListSteal(typeWall string,path string,page string,orderby string) List{
 	);
 
 	k.OnRequest(func(r *colly.Request) {
-		r.Headers.Set("Host:", typeWall+".alphacoders.com")
+		r.Headers.Set("Host", typeWall+".alphacoders.com")
 	})
 	extensions.RandomUserAgent(k)
     extensions.Referer(k)
