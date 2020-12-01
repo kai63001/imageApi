@@ -63,7 +63,7 @@ func ListSteal(typeWall string,path string,page string,orderby string) List{
 	})
 
 	k.OnError(func(_ *colly.Response, err error) {
-		myPage = "error"
+		myPage = "Err"+err.Error()
 	})
 	k.Visit(uri)
 	m := List{
