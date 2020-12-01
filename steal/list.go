@@ -18,6 +18,10 @@ func ListSteal(typeWall string,path string,page string,orderby string) List{
 	k := colly.NewCollector(
 		colly.AllowedDomains(typeWall+".alphacoders.com"),
 	);
+
+	k.OnRequest(func(r *colly.Request) {
+		r.Headers.Set("Host:", typeWall+".alphacoders.com")
+	})
 	extensions.RandomUserAgent(k)
     extensions.Referer(k)
 	uri := "https://"+typeWall+".alphacoders.com"+"/"+path+"&page="+page
