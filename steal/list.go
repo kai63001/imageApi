@@ -61,6 +61,10 @@ func ListSteal(typeWall string,path string,page string,orderby string) List{
 		myPage = link
 		i++
 	})
+
+	k.OnError(func(_ *colly.Response, err error) {
+		myPage = "error"
+	})
 	k.Visit(uri)
 	m := List{
 		page,myPage,imageData,
