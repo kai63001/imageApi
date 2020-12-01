@@ -23,7 +23,6 @@ func ListSteal(typeWall string,path string,page string,orderby string) List{
 		r.Headers.Set("Host", typeWall+".alphacoders.com")
 	})
 	extensions.RandomUserAgent(k)
-    extensions.Referer(k)
 	uri := "https://"+typeWall+".alphacoders.com"+"/"+path+"&page="+page
 	_ = uri
 	switch orderby{
